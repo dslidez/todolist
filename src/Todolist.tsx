@@ -1,11 +1,23 @@
 import React from 'react';
 
-function Todolist() {
+type TaskType = {
+    title: string
+    id: number
+    isDone: boolean
+}
+
+type PropsType = {
+    title: string
+    tasks: Array<TaskType>
+}
+
+
+function Todolist(props: PropsType) {
     return (
          <div>
-                <h3></h3>
+                <h3>{props.title}</h3>
                 <div>
-                    <input/>
+                    <input type="date" />
                     <button>+</button>
                 </div>
                 <ul>
