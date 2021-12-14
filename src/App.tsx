@@ -10,7 +10,9 @@ function App() {
     { id: 2, title: "JS", isDone: true },
     { id: 3, title: "ReactJs", isDone: false },
     { id: 4, title: "Rest API", isDone: false },
-    { id: 5, title: "GraphQL", isDone: false },
+    { id: 6, title: "GraphQL", isDone: false },
+    { id: 7, title: "MongoDB", isDone: false },
+    { id: 8, title: "PostgresQL", isDone: false },
   ]);
 
   function removeTask(id: number) {
