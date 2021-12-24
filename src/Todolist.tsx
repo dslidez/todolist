@@ -3,7 +3,7 @@ import { FilterValuesType } from './App';
 
 type TaskType = {
     title: string
-    id: number
+    id: string
     isDone: boolean
 }
 
