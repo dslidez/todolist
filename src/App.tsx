@@ -6,6 +6,8 @@ import { v1 } from 'uuid';
 
 export type FilterValuesType = "all" | "active" | "completed";
 
+
+
 function App() {
   let [tasks, setTasks] = useState([
     { id: v1(), title: "HTML&CSS", isDone: true },
@@ -16,6 +18,12 @@ function App() {
     { id: v1(), title: "MongoDB", isDone: false },
     { id: v1(), title: "PostgresQL", isDone: false },
   ]);
+
+  function addTask(title: string) {
+    let task = { id: v1(), title: title, isDone: false};
+    let newTasks = [task, ...tasks];
+    setTasks(newTasks)
+  }
 
   function removeTask(id: string) {
     let filteredTasks = tasks.filter((t) => t.id != id);
@@ -43,6 +51,7 @@ function App() {
       <Todolist title="What to learn"
                 tasks={tasksForTodolist}
                 removeTask={removeTask}
+                addTask={addTask}
                 changeFilter={changeFilter} />
     </div>
   );
