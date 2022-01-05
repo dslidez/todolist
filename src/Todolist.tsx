@@ -1,7 +1,7 @@
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { FilterValuesType } from './App';
 
-type TaskType = {
+export type TaskType = {
     title: string
     id: string
     isDone: boolean
