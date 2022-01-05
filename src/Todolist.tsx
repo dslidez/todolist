@@ -11,10 +11,10 @@ type PropsType = {
     id: string
     title: string
     tasks: Array<TaskType>
-    addTask: (title: string) => void
-    removeTask: (taskId: string) => void
-    changeFilter: (value: FilterValuesType) => void
-    changeTaskStatus: (id: string, isDone: boolean) => void
+    addTask: (title: string, todolistId:string) => void
+    removeTask: (taskId: string, todolistId:string) => void
+    changeFilter: (value: FilterValuesType, todolistId: string) => void
+    changeTaskStatus: (id: string, isDone: boolean, todolistId:string) => void
     filter: FilterValuesType
 }
 
@@ -30,7 +30,7 @@ function Todolist(props: PropsType) {
 
     const addTask = () => {
         if (title.trim() !== "") {
-            props.addTask(title.trim())
+            props.addTask(title.trim(), props.id)
             setTitle("");
         } else {
             setErorr("Title is required")
@@ -48,9 +48,9 @@ function Todolist(props: PropsType) {
         }
     }
 
-    const onAllClickHandler = () => props.changeFilter("all");
-    const onActiveClickHandler = () => props.changeFilter("active");
-    const onCompletedClickHandler = () => props.changeFilter("completed");
+    const onAllClickHandler = () => props.changeFilter("all", props.id);
+    const onActiveClickHandler = () => props.changeFilter("active", props.id);
+    const onCompletedClickHandler = () => props.changeFilter("completed", props.id);
 
 
 
@@ -75,10 +75,10 @@ function Todolist(props: PropsType) {
                     {
                         props.tasks.map(t => {
 
-                            const onClickHandler = () => props.removeTask(t.id)
+                            const onClickHandler = () => props.removeTask(t.id,  props.id)
                             const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
                                 let newIsDoneValue = e.currentTarget.checked;
-                                props.changeTaskStatus(t.id, newIsDoneValue)
+                                props.changeTaskStatus(t.id, newIsDoneValue,  props.id)
                             }
 
 
