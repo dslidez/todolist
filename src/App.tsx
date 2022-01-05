@@ -33,18 +33,6 @@ function App() {
     setTasks(filteredTasks);
   }
 
-  let tasksForTodolist = tasks;
-
-  if (filter === "active") {
-    tasksForTodolist = tasks.filter((t) => t.isDone === false);
-  }
-
-  if (filter === "completed") {
-    tasksForTodolist = tasks.filter((t) => t.isDone === true);
-  }
-
-  
-
   function changeStatus(id: string, isDone: boolean) {
     let task = tasks.find((t) => t.id === id);
     if (task) {
@@ -54,9 +42,9 @@ function App() {
   }
 
   type TodolistType = {
-    id: string
-    title: string
-    filter: FilterValuesType
+    id: string;
+    title: string;
+    filter: FilterValuesType;
   };
 
   let [todolists, setTodolists] = useState<Array<TodolistType>>([
@@ -75,6 +63,16 @@ function App() {
   return (
     <div className="App">
       {todolists.map((tl) => {
+        let tasksForTodolist = tasks;
+
+        if (tl.filter === "active") {
+          tasksForTodolist = tasks.filter((t) => t.isDone === false);
+        }
+
+        if (tl.filter === "completed") {
+          tasksForTodolist = tasks.filter((t) => t.isDone === true);
+        }
+
         return (
           <Todolist
             key={tl.id}
