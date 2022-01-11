@@ -8,15 +8,15 @@
 }
 
 .error {
-  border: rgb(221, 2, 2) 1px solid;
+  border: red 1px solid;
 }
 
 .error-message {
-  color: rgb(233, 4, 4);
+  color: red;
 }
 
 .active-filter {
-  background-color: rgb(110, 190, 255);
+  background-color: rgb(136, 200, 252);
 }
 
 .is-done {
