@@ -57,7 +57,7 @@ function Todolist(props: PropsType) {
 
                          return <li key={t.id} className={t.isDone ? "is-done" : "" }>
                             <input onChange={onChangeHandler} type="checkbox" checked={t.isDone}/> 
-                            <span>{t.title}</span>
+                            {EditableSpan}
                             <button onClick={onClickHandler}>x</button>    
                         </li>
                         })
@@ -75,6 +75,15 @@ function Todolist(props: PropsType) {
                 </div>
             </div>
     )
+}
+
+type EditableSpanPropsType = {
+ title: string
+}
+
+function EditableSpan(props: EditableSpanPropsType ) {
+    return <span>{props.title}</span>
+
 }
 
 
