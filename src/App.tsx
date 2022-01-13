@@ -73,6 +73,19 @@ function App() {
     }
   }
 
+  function changeTaskTitle(id: string, newTitle: string, todolistId:string) {
+    //достаем нужный массив по todolistId
+    let todolistTasks = tasks[todolistId]
+    //найдем нужную таску 
+    let task = todolistTasks.find((t) => t.id === id);
+    //изменим таску, если она нашлась
+    if (task) {
+      task.title = newTitle;
+      //засетаем в стейт копию объекта, чтобы реакт отреагировал перерисовкой
+      setTasks({...tasks});
+    }
+  }
+
   function addTodolist (title:string) {
     let newTodolistId = v1();
     let newTodolist: TodolistType = {id: newTodolistId, title: title, filter: 'all'};
@@ -115,6 +128,7 @@ function App() {
             changeTaskStatus={changeStatus}
             filter={tl.filter}
             removeTodolist={removeTodolist}
+            changeTaskTitle={changeTaskTitle}
           />
         );
       })}
