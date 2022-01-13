@@ -31,6 +31,14 @@ function App() {
     setTodolists(filteredTodolist);
   }
 
+  function changeTodolistTitle(todolistId: string, newTitle: string) {
+   const todolist = todolists.find(tl => tl.id === todolistId)
+   if (todolist) {
+     todolist.title = newTitle;
+     setTodolists([...todolists]);
+   }
+  }
+
   let [tasks, setTasks] = useState<TasksStateType>({
     [todolistId1]: [
       { id: v1(), title: "GraphQL", isDone: false },
@@ -129,6 +137,7 @@ function App() {
             filter={tl.filter}
             removeTodolist={removeTodolist}
             changeTaskTitle={changeTaskTitle}
+            changeTodolistTitle={changeTodolistTitle}
           />
         );
       })}
