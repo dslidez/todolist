@@ -17,7 +17,7 @@ import { Menu } from "@material-ui/icons";
 
 export type FilterValuesType = "all" | "active" | "completed";
 
-type TasksStateType = {
+export type TasksStateType = {
   [key: string]: Array<TaskType>;
 };
 
