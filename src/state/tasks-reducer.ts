@@ -1,9 +1,10 @@
 import { v1 } from 'uuid';
 import { TasksStateType } from '../App';
 
-export type SomeActionCreatorActionType1={
-    type: ' ',
-    id: string
+export type removeTaskACActionType={
+    type: 'REMOVE-TASK',
+    taskId: string,
+    todolistId: string
 }
 
 export type SomeActionCreatorActionType2={
@@ -12,21 +13,25 @@ export type SomeActionCreatorActionType2={
 }
 
 
-type ActionsType = SomeActionCreatorActionType1 | SomeActionCreatorActionType2
+type ActionsType = removeTaskACActionType | SomeActionCreatorActionType2
 
 export const tasksReducer = (state: Array<TasksStateType>, action: ActionsType) => {
     switch (action.type) {
 
-        case '': {
-            return state;
+        case 'REMOVE-TASK': {
+            const stateCopy = {...state}
+            const tasks = stateCopy[action.todolistId];
+            const newTasks = tasks.filter(t => t.id !== action.taskId);
+            stateCopy[action.todolistId] = newTasks;
+            return stateCopy;
         }
         default:
             throw new Error(" I don't understand this type ")
     }
 }
 
-export const SomeAC1 = (id: string): SomeActionCreatorActionType1 => {
-    return { type: ' ', id: id}
+export const removeTaskAC = (taskId: string, todolistId: string ): removeTaskACActionType => {
+    return { type: 'REMOVE-TASK', taskId, todolistId }
  }
  
 export const SomeAC2 = (id: string): SomeActionCreatorActionType2 => {
