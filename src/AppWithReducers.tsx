@@ -3,33 +3,19 @@ import "./App.css";
 import Todolist, { TaskType } from "./Todolist";
 import { v1 } from "uuid";
 import AddItemForm from "./AddItemForm";
-import {
-  AppBar,
-  Button,
-  Container,
-  Grid,
-  IconButton,
-  Paper,
-  Toolbar,
-  Typography,
-} from "@material-ui/core";
+import { AppBar, Button,Container,Grid,IconButton,Paper,Toolbar, Typography} from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
 
 export type FilterValuesType = "all" | "active" | "completed";
-
-export type TasksStateType = {
-  [key: string]: Array<TaskType>;
-};
-
-
-
+export type TasksStateType = { [key: string]: Array<TaskType>;};
 export type TodolistType = {
   id: string;
   title: string;
   filter: FilterValuesType;
 };
 
-function App() {
+
+function AppWithReducers() {
   let todolistId1 = v1();
   let todolistId2 = v1();
 
@@ -176,4 +162,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppWithReducers;

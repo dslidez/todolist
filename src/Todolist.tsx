@@ -6,8 +6,8 @@ import { FilterValuesType } from './App';
 import { EditableSpan } from './EditableSpan';
 
 export type TaskType = {
-    title: string
     id: string
+    title: string
     isDone: boolean
 }
 
