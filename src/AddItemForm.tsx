@@ -8,6 +8,7 @@ export type AddItemFormPropsType = {
 
 function AddItemForm (props: AddItemFormPropsType) {
 
+    console.log("AddItemForm called")
     let [title, setTitle] = useState("")
     let [error, setError] = useState<string | null> (null)
 
@@ -25,7 +26,9 @@ function AddItemForm (props: AddItemFormPropsType) {
     }
 
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        setError(null);
+        if (e.key !== null ) {
+            setError(null);
+        }
         if (e.key === 'Enter') {
             addItem();
         }
