@@ -2,7 +2,7 @@ import React, { useReducer, useState } from "react";
 import "./App.css";
 import Todolist, { TaskType } from "./Todolist";
 import { v1 } from "uuid";
-import AddItemForm from "./AddItemForm";
+import {AddItemForm} from "./AddItemForm";
 import { AppBar, Button,Container,Grid,IconButton,Paper,Toolbar, Typography} from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
 import { AddTodolistAC, ChangeTodolistFilterAC, ChangeTodolistTitleAC, RemoveTodolistAC } from "./state/todolist-reducer";
