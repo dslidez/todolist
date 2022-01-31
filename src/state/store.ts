@@ -13,6 +13,7 @@ export const store = createStore(rootReducer);
 //automatic find type of approotstate
 export type AppRootStateType = ReturnType<typeof rootReducer>
 
+//store
 // console log store
 // @ts-ignore
 window.store = store;
