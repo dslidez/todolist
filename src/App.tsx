@@ -15,6 +15,10 @@ import {
 } from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
 
+import { todolistsAPI } from "./api/todolists-api";
+import { setTodolistsAC } from "./state/todolist-reducer";
+
+
 export type FilterValuesType = "all" | "active" | "completed";
 
 export type TasksStateType = {
@@ -29,7 +33,12 @@ export type TodolistType = {
   filter: FilterValuesType;
 };
 
+
+
+
+
 function App() {
+  
   let todolistId1 = v1();
   let todolistId2 = v1();
 

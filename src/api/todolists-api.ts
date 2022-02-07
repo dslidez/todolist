@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios';
+import {TodolistType} from '../App'
 
 const settings = {
     withCredentials: true,
@@ -16,12 +17,12 @@ const settings = {
     }
  })
  
- type TodolistType= {
-    id: string
-    addedDate: string
-    order: number
-    title: string
- }
+//  export type TodolistType= {
+//     id: string
+//     addedDate: string
+//     order: number
+//     title: string
+//  }
  
  type CreateTodolistResponseType = {
     resultCode: number

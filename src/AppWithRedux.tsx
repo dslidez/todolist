@@ -1,14 +1,16 @@
-import React, { useCallback, useReducer, useState } from "react";
+import React, { useCallback, useEffect, useReducer, useState } from "react";
 import "./App.css";
 import Todolist, { TaskType } from "./Todolist";
 import { v1 } from "uuid";
 import {AddItemForm} from "./AddItemForm";
 import { AppBar, Button,Container,Grid,IconButton,Paper,Toolbar, Typography} from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
-import { AddTodolistAC, ChangeTodolistFilterAC, ChangeTodolistTitleAC, RemoveTodolistAC } from "./state/todolist-reducer";
+import { AddTodolistAC, ChangeTodolistFilterAC, ChangeTodolistTitleAC, fetchTodolistsTC, RemoveTodolistAC, setTodolistsAC } from "./state/todolist-reducer";
 import { addTaskAC, changeTaskStatusAC, changeTaskTitlesAC, removeTaskAC} from "./state/tasks-reducer";
 import { useDispatch, useSelector } from "react-redux";
 import { AppRootStateType } from "./state/store";
+import { todolistsAPI } from "./api/todolists-api";
+import { AxiosResponse } from "axios";
 
 export type FilterValuesType = "all" | "active" | "completed";
 export type TasksStateType = { [key: string]: Array<TaskType>};
@@ -25,6 +27,11 @@ export type TodolistType = {
   const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
   const dispatch = useDispatch();
 
+  useEffect( () => {
+   dispatch(fetchTodolistsTC())
+  })
+
+  
 
   const removeTodolist = useCallback ( (todolistId: string) => {
     const action = RemoveTodolistAC(todolistId);
