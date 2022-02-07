@@ -53,9 +53,12 @@ export type TodolistType = {
    dispatch(action);
   }, [])
 
-  const removeTask = useCallback ( (id: string, todolistId: string) => {
-    let action = removeTaskAC(id, todolistId);
-    dispatch(action);
+  const removeTask = useCallback ( function(id: string, todolistId: string) {
+    todolistsAPI.deleteTask(todolistId, id)
+    .then(() => {
+      const action = removeTaskAC(id, todolistId);
+      dispatch(action);
+    })
   }, [])
 
   const changeStatus = useCallback ( (id: string, isDone: boolean, todolistId: string) => {

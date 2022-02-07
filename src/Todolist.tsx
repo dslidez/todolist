@@ -37,7 +37,7 @@ const Todolist = React.memo ((props: PropsType) => {
 
   useEffect( () => {
    dispatch(fetchTasksTC(props.id))
-  }, [props.id])
+  }, [])
 
     console.log('Todolist called')
     
