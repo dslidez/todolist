@@ -6,7 +6,7 @@ import {AddItemForm} from "./AddItemForm";
 import { AppBar, Button,Container,Grid,IconButton,Paper,Toolbar, Typography} from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
 import { AddTodolistAC, ChangeTodolistFilterAC, ChangeTodolistTitleAC, fetchTodolistsTC, RemoveTodolistAC, setTodolistsAC } from "./state/todolist-reducer";
-import { addTaskAC, changeTaskStatusAC, changeTaskTitlesAC, removeTaskAC, removeTaskTC} from "./state/tasks-reducer";
+import { addTaskAC, addTaskTC, changeTaskStatusAC, changeTaskTitlesAC, removeTaskAC, removeTaskTC} from "./state/tasks-reducer";
 import { useDispatch, useSelector } from "react-redux";
 import { AppRootStateType } from "./state/store";
 import { todolistsAPI } from "./api/todolists-api";
@@ -49,8 +49,8 @@ export type TodolistType = {
   }, [])
 
   const addTask = useCallback ( (title: string, todolistId: string) => {
-   let action = addTaskAC(title, todolistId);
-   dispatch(action);
+   const thunk = addTaskTC(title, todolistId);
+   dispatch(thunk);
   }, [])
 
   const removeTask = useCallback ( function(id: string, todolistId: string) {

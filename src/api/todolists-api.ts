@@ -103,7 +103,7 @@ const settings = {
     },
 
     createTask(todolistId: string, title: string) {
-        const promise =  instance.post<CreateTaskType>(`todo-lists/${todolistId}/tasks`,{title})
+        const promise =  instance.post<ResponseType<{item: ApiTaskType}>>(`todo-lists/${todolistId}/tasks`,{title})
         return promise
     },
 

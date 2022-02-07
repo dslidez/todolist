@@ -18,8 +18,7 @@ export type removeTaskACActionType={
 }
 export type addTaskACActionType={
     type: 'ADD-TASK'
-    todolistId: string
-    title: string
+    task: ApiTaskType
 }
 export type changeTaskStatusACActionType={
     type: 'CHANGE-TASK-STATUS'
@@ -58,12 +57,13 @@ export const tasksReducer = (state: TasksStateType = initialState, action: Actio
         }
         case 'ADD-TASK': {
             const stateCopy = {...state}
-            const tasks = stateCopy[action.todolistId];
-            let newTask = { id: v1(), title: action.title, isDone: false };
-            const newTasks = [newTask, ...tasks]
-            stateCopy[action.todolistId] = newTasks;
+            const newTask = action.task
+            const tasks = stateCopy[newTask.todoListId];
+            const newTasks = [newTask, ...tasks];
+            stateCopy[newTask.todoListId] = newTasks;
             return stateCopy;
-        }
+         }
+         
         case 'CHANGE-TASK-STATUS': {
             let todolistTasks = state[action.todolistId];
             state[action.todolistId] = todolistTasks.map(t =>  t.id === action.taskId 
@@ -111,9 +111,13 @@ export const removeTaskAC = (taskId: string, todolistId: string ): removeTaskACA
     return { type: 'REMOVE-TASK', taskId, todolistId }
  }
  
-export const addTaskAC = (  title: string, todolistId: string ): addTaskACActionType => {
-    return { type: 'ADD-TASK', title, todolistId }
- }
+export const addTaskAC = (task: ApiTaskType): addTaskACActionType => {
+    return {type: 'ADD-TASK', task}
+ } 
+
+// export const addTaskAC = (  title: string, todolistId: string ): addTaskACActionType => {
+//     return { type: 'ADD-TASK', title, todolistId }
+//  }
 
 export const changeTaskStatusAC = ( taskId: string, isDone: boolean, todolistId: string): changeTaskStatusACActionType => {
     return { type: 'CHANGE-TASK-STATUS', taskId, todolistId, isDone  }
@@ -149,3 +153,11 @@ export const setTasksAC = (tasks: Array<ApiTaskType>, todolistId: string): SetTa
      } )
  }
  
+ export const addTaskTC = (title: string, todolistId: string) => (dispatch: Dispatch) => {
+    todolistsAPI.createTask(todolistId, title)
+    .then(res => {
+        const task = res.data.data.item;
+        const action = addTaskAC(task);
+        dispatch(action)
+    } )
+}
