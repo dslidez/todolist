@@ -1,9 +1,11 @@
 import { Button, Checkbox, IconButton } from '@material-ui/core';
 import { Delete } from '@material-ui/icons';
-import React, { ChangeEvent, KeyboardEvent, useCallback, useState } from 'react';
+import React, { ChangeEvent, KeyboardEvent, useCallback, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import {AddItemForm} from './AddItemForm';
 import { FilterValuesType } from './App';
 import { EditableSpan } from './EditableSpan';
+import { fetchTasksTC } from './state/tasks-reducer';
 import { Task } from './Task';
 
 export type TaskType = {
@@ -30,6 +32,12 @@ type PropsType = {
 
 
 const Todolist = React.memo ((props: PropsType) => {
+
+  const dispatch = useDispatch();
+
+  useEffect( () => {
+   dispatch(fetchTasksTC(props.id))
+  }, [props.id])
 
     console.log('Todolist called')
     

@@ -48,7 +48,8 @@ const settings = {
     data: D
  }
 
- export type TaskType ={
+ export type ApiTaskType ={
+    isDone: boolean
     description: string
     title: string
     completed: boolean
@@ -65,7 +66,7 @@ const settings = {
  type GetTasksResponseType = {
      error: string | null
      totalCount: number
-     items: TaskType[]
+     items: ApiTaskType[]
  }
 
  type CreateTaskType= {

@@ -29,7 +29,7 @@ export type TodolistType = {
 
   useEffect( () => {
    dispatch(fetchTodolistsTC())
-  })
+  }, [])
 
   
 
