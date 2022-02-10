@@ -112,7 +112,7 @@ const settings = {
         return promise
     },
     //title, description, completed, status, priority...
-    updateTask(todolistId: string, taskId: string, title:string) {
+    updateTask(taskId: string, title: string, todolistId: string) {
         const promise =  instance.put<ResponseType<{}>>(`todo-lists/${todolistId}/tasks/${taskId}`, {title})
         return promise
     },

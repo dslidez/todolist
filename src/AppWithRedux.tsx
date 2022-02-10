@@ -5,8 +5,8 @@ import { v1 } from "uuid";
 import {AddItemForm} from "./AddItemForm";
 import { AppBar, Button,Container,Grid,IconButton,Paper,Toolbar, Typography} from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
-import { AddTodolistAC, ChangeTodolistFilterAC, ChangeTodolistTitleAC, fetchTodolistsTC, RemoveTodolistAC, removeTodolistTC, setTodolistsAC } from "./state/todolist-reducer";
-import { addTaskAC, addTaskTC, changeTaskStatusAC, changeTaskTitlesAC, removeTaskAC, removeTaskTC} from "./state/tasks-reducer";
+import { AddTodolistAC, addTodolistTC, ChangeTodolistFilterAC, ChangeTodolistTitleAC, ChangeTodolistTitleTC, fetchTodolistsTC, RemoveTodolistAC, removeTodolistTC, setTodolistsAC } from "./state/todolist-reducer";
+import { addTaskAC, addTaskTC, changeTaskStatusAC, changeTaskTitlesAC, changeTaskTitlesTC, removeTaskAC, removeTaskTC} from "./state/tasks-reducer";
 import { useDispatch, useSelector } from "react-redux";
 import { AppRootStateType } from "./state/store";
 import { todolistsAPI } from "./api/todolists-api";
@@ -64,12 +64,12 @@ export type TodolistType = {
   },[])
 
   const changeTaskTitle = useCallback ( (id: string, newTitle: string, todolistId: string) => {
-    let action = changeTaskTitlesAC(id, newTitle, todolistId);
+    let action = changeTaskTitlesTC(id, newTitle, todolistId);
     dispatch(action);
   }, [])
 
   const addTodolist = useCallback ( (title: string) => {
-    let action = AddTodolistAC(title);
+    let action = addTodolistTC(title);
     dispatch(action);
   }, [dispatch]);
 
