@@ -117,26 +117,32 @@ export const fetchTodolistsTC = () => {
 }
 export const removeTodolistTC = (todolistId: string) => {
  return (dispatch: Dispatch) => {
+    dispatch(setAppStatusAC('loading'))
     todolistsAPI.deleteTodolist(todolistId)
         .then((res) => {
             dispatch(RemoveTodolistAC(todolistId))
+            dispatch(setAppStatusAC('succeeded'))
         })
  }
 }
 export const addTodolistTC = (title: string) => {
  return (dispatch: Dispatch) => {
+    dispatch(setAppStatusAC('loading'))
     todolistsAPI.createTodolist(title)
         .then((res) => {
             dispatch(AddTodolistAC(title))
+            dispatch(setAppStatusAC('succeeded'))
         })
  }
 }
 
 export const ChangeTodolistTitleTC = (id: string, title: string) => {
  return (dispatch: Dispatch) => {
+    dispatch(setAppStatusAC('loading'))
     todolistsAPI.updateTodolist(id, title)
         .then((res) => {
             dispatch(ChangeTodolistTitleAC(id, title))
+            dispatch(setAppStatusAC('succeeded'))
         })
  }
 }

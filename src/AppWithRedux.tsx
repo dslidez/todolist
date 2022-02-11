@@ -87,7 +87,7 @@ export type TodolistType = {
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
-      {status === 'loading' && <LinearProgress />}
+      {status === 'loading' && <LinearProgress color="secondary"/>}
       <Container fixed>
         <Grid container style={{padding: '20px'}}>
           <AddItemForm addItem={addTodolist} />

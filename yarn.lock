@@ -1956,6 +1956,24 @@
     react-transition-group "^4.4.2"
     rifm "^0.12.1"
 
+"@mui/material@^5.4.1":
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/@mui/material/-/material-5.4.1.tgz#05d3f726771c413dc430163d7c508edfcee04807"
+  integrity sha512-SxAT43UAjFTBBpJrN+oGrv40xP1uCa5Z49NfHt3m93xYeFzbxKOk0V9IKU7zlUjbsaVQ0i+o24yF5GULZmynlA==
+  dependencies:
+    "@babel/runtime" "^7.17.0"
+    "@mui/base" "5.0.0-alpha.68"
+    "@mui/system" "^5.4.1"
+    "@mui/types" "^7.1.1"
+    "@mui/utils" "^5.4.1"
+    "@types/react-transition-group" "^4.4.4"
+    clsx "^1.1.1"
+    csstype "^3.0.10"
+    hoist-non-react-statics "^3.3.2"
+    prop-types "^15.7.2"
+    react-is "^17.0.2"
+    react-transition-group "^4.4.2"
+
 "@mui/private-theming@^5.4.1":
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/@mui/private-theming/-/private-theming-5.4.1.tgz#5fa6490f35e78781239f1944ae80a7006c5a7648"
@@ -3362,7 +3380,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-transition-group@^4.2.0":
+"@types/react-transition-group@^4.2.0", "@types/react-transition-group@^4.4.4":
   version "4.4.4"
   resolved "https://registry.npmjs.org/@types/react-transition-group/-/react-transition-group-4.4.4.tgz"
   integrity sha512-7gAPz7anVK5xzbeQW9wFBDg7G++aPLAFY0QaSMOou9rJZpbuI58WAuJrgu+qR92l61grlnCUe7AFX8KGahAgug==
