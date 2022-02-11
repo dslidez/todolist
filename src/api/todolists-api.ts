@@ -12,7 +12,6 @@ const settings = {
     baseURL: 'https://social-network.samuraijs.com/api/1.1/',
     withCredentials: true,
     headers: {
-         // Не забываем заменить API-KEY на собственный
         'API-KEY': 'fc086433-a3b2-4e29-b729-0bb49b9ccb7d'
     }
  })

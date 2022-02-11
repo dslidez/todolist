@@ -1,6 +1,6 @@
 import { Button, Checkbox, IconButton } from '@material-ui/core';
 import { Delete } from '@material-ui/icons';
-import React, { ChangeEvent, KeyboardEvent, useCallback, useEffect, useState } from 'react';
+import React, { ChangeEvent,  useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {AddItemForm} from './AddItemForm';
 import { FilterValuesType } from './App';

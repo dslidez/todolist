@@ -2,6 +2,7 @@ import { Dispatch } from 'redux';
 import { v1 } from 'uuid';
 import { todolistsAPI } from '../api/todolists-api';
 import { FilterValuesType, TodolistType } from '../App';
+import { setAppStatusAC } from '../app-reducer';
 
 export type RemoveTodolistActionType={
     type: 'REMOVE-TODOLIST',
@@ -45,7 +46,7 @@ export const todolistReducer = (state: Array<TodolistType> = initialState, actio
     switch (action.type) {
 
         case 'REMOVE-TODOLIST': {
-            return state.filter((tl) => tl.id != action.id)
+            return state.filter((tl) => tl.id !== action.id)
         }
         case 'ADD-TODOLIST': {
             return [...state, {
@@ -106,9 +107,11 @@ export const setTodolistsAC = (todolists: Array<TodolistType>): SetTodolistsActi
  
 export const fetchTodolistsTC = () => {
  return (dispatch: Dispatch) => {
+     dispatch(setAppStatusAC('loading'))
     todolistsAPI.getTodolist()
         .then((res) => {
             dispatch(setTodolistsAC(res.data))
+            dispatch(setAppStatusAC('succeeded'))
         })
  }
 }

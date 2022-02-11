@@ -1,5 +1,4 @@
 import { Dispatch } from 'redux';
-import { v1 } from 'uuid';
 import { ApiTaskType, todolistsAPI } from '../api/todolists-api';
 import { TasksStateType } from '../App';
 import { TaskType } from '../Todolist';
