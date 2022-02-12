@@ -135,21 +135,26 @@ export const setTasksAC = (tasks: Array<ApiTaskType>, todolistId: string): SetTa
  }
  
  export const fetchTasksTC = (todolistId: string) => {
+        
     return (dispatch: Dispatch) => {
+        dispatch(setAppStatusAC('loading')) 
         todolistsAPI.getTodolistTasks(todolistId)
             .then((res) => {
                 const tasks = res.data.items
                 const action = setTasksAC(tasks, todolistId)
                 dispatch(action)
+                dispatch(setAppStatusAC('succeeded')) 
             })
     }
  }
 
  export const removeTaskTC = (taskId: string, todolistId: string) => (dispatch: Dispatch) => {
-     todolistsAPI.deleteTask(todolistId, taskId)
+    dispatch(setAppStatusAC('loading')) 
+    todolistsAPI.deleteTask(todolistId, taskId)
      .then(res => {
          const action = removeTaskAC(taskId, todolistId)
          dispatch(action)
+         dispatch(setAppStatusAC('succeeded'))
      } )
  }
  
