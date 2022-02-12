@@ -165,10 +165,12 @@ export const setTasksAC = (tasks: Array<ApiTaskType>, todolistId: string): SetTa
 }
 
  export const changeTaskTitlesTC = (taskId: string, title: string, todolistId: string) => (dispatch: Dispatch) => {
+    dispatch(setAppStatusAC('loading'))
     todolistsAPI.updateTask(taskId, title, todolistId)
     .then(res => {
         const action = changeTaskTitlesAC(taskId, title, todolistId)
         dispatch(action)
+        dispatch(setAppStatusAC('succeeded'))
     } )
 }
 
