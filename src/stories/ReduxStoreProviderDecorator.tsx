@@ -5,7 +5,7 @@ import {tasksReducer} from '../state/tasks-reducer'
 import {todolistReducer} from '../state/todolist-reducer'
 import {v1} from 'uuid'
 import {AppRootStateType} from '../state/store'
-import { appReducer } from '../app-reducer'
+import { appReducer } from '../app/app-reducer'
 
 const rootReducer = combineReducers({
    tasks: tasksReducer,
@@ -28,7 +28,8 @@ const initialGlobalState = {
            {id: v1(), title: "React Book", isDone: true}
        ]
    },
-   app: { status: 'loading' }
+   app: { status: 'loading', error: 'OMG!' }
+   
 };
  
 export const storyBookStore = createStore(rootReducer, initialGlobalState as AppRootStateType);

@@ -2,9 +2,9 @@ import { Button, Checkbox, IconButton } from '@material-ui/core';
 import { Delete } from '@material-ui/icons';
 import React, { ChangeEvent,  useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {AddItemForm} from './AddItemForm';
+import {AddItemForm} from './components/add-item-form/AddItemForm';
 import { FilterValuesType } from './App';
-import { EditableSpan } from './EditableSpan';
+import { EditableSpan } from './components/editable-span/EditableSpan';
 import { fetchTasksTC } from './state/tasks-reducer';
 import { Task } from './Task';
 

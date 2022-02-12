@@ -2,7 +2,7 @@ import { Dispatch } from 'redux';
 import { v1 } from 'uuid';
 import { todolistsAPI } from '../api/todolists-api';
 import { FilterValuesType, TodolistType } from '../App';
-import { setAppStatusAC } from '../app-reducer';
+import { setAppStatusAC } from '../app/app-reducer';
 
 export type RemoveTodolistActionType={
     type: 'REMOVE-TODOLIST',

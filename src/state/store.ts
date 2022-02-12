@@ -2,7 +2,7 @@ import {tasksReducer} from './tasks-reducer';
 import {todolistReducer} from './todolist-reducer';
 import {applyMiddleware, combineReducers, createStore} from 'redux';
 import thunk from 'redux-thunk';
-import { appReducer } from '../app-reducer';
+import { appReducer } from '../app/app-reducer';
 
 
 const rootReducer = combineReducers({

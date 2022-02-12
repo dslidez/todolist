@@ -1,17 +1,18 @@
 import React, { useCallback, useEffect, useReducer, useState } from "react";
 import "./App.css";
-import Todolist, { TaskType } from "./Todolist";
+import Todolist, { TaskType } from "../Todolist";
 import { v1 } from "uuid";
-import {AddItemForm} from "./AddItemForm";
+import {AddItemForm} from "../components/add-item-form/AddItemForm";
 import { AppBar, Button,Container,Grid,IconButton,Paper,Toolbar, Typography, LinearProgress} from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
-import { AddTodolistAC, addTodolistTC, ChangeTodolistFilterAC, ChangeTodolistTitleAC, ChangeTodolistTitleTC, fetchTodolistsTC, RemoveTodolistAC, removeTodolistTC, setTodolistsAC } from "./state/todolist-reducer";
-import { addTaskAC, addTaskTC, changeTaskStatusAC, changeTaskTitlesAC, changeTaskTitlesTC, removeTaskAC, removeTaskTC} from "./state/tasks-reducer";
+import { AddTodolistAC, addTodolistTC, ChangeTodolistFilterAC, ChangeTodolistTitleAC, ChangeTodolistTitleTC, fetchTodolistsTC, RemoveTodolistAC, removeTodolistTC, setTodolistsAC } from "../state/todolist-reducer";
+import { addTaskAC, addTaskTC, changeTaskStatusAC, changeTaskTitlesAC, changeTaskTitlesTC, removeTaskAC, removeTaskTC} from "../state/tasks-reducer";
 import { useDispatch, useSelector } from "react-redux";
-import { AppRootStateType } from "./state/store";
-import { todolistsAPI } from "./api/todolists-api";
+import { AppRootStateType } from "../state/store";
+import { todolistsAPI } from "../api/todolists-api";
 import { AxiosResponse } from "axios";
 import { RequestStatusType } from "./app-reducer";
+import { ErrorSnackbar } from "../components/error-snack-bar/ErrorSnackbar";
 
 export type FilterValuesType = "all" | "active" | "completed";
 export type TasksStateType = { [key: string]: Array<TaskType>};
@@ -78,6 +79,7 @@ export type TodolistType = {
 
   return (
     <div className="App">
+      <ErrorSnackbar />
       <AppBar position="static">
         <Toolbar>
           <IconButton edge="start" color="inherit" aria-label="menu">
