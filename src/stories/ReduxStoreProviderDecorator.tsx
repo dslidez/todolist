@@ -28,7 +28,7 @@ const initialGlobalState = {
            {id: v1(), title: "React Book", isDone: true}
        ]
    },
-   app: { status: 'loading', error: 'OMG!' }
+   app: { status: 'loading', error: null }
    
 };
  

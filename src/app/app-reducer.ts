@@ -2,7 +2,7 @@ export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
 
 const initialState = {
    status: 'loading' as RequestStatusType,
-   error: 'OMG! ERROR! 404 NOT FOUND FUTURE'
+   error: null
 }
 
 type InitialStateType = typeof initialState

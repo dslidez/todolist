@@ -175,6 +175,10 @@ export const setTasksAC = (tasks: Array<ApiTaskType>, todolistId: string): SetTa
                dispatch(setAppStatusAC('failed'))
            }
        })
+       .catch((error) => {
+           dispatch(setAppErrorAC(error.message))
+           dispatch(setAppErrorAC('failed'))
+       })
 }
 
 
