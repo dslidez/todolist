@@ -91,7 +91,7 @@ const settings = {
     },
 
     updateTodolist(todolistId: string, title: string) {
-        const promise = instance.put<UpdateT odolistResponseType>(`todo-lists/${todolistId}`, {title})
+        const promise = instance.put<UpdateTodolistResponseType>(`todo-lists/${todolistId}`, {title})
         return promise
     },
 
